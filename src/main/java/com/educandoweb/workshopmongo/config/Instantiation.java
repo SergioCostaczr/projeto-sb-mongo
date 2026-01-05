@@ -2,6 +2,7 @@ package com.educandoweb.workshopmongo.config;
 
 import com.educandoweb.workshopmongo.domain.Post;
 import com.educandoweb.workshopmongo.domain.User;
+import com.educandoweb.workshopmongo.dto.AuthorDTO;
 import com.educandoweb.workshopmongo.repository.PostRepository;
 import com.educandoweb.workshopmongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +36,8 @@ public class Instantiation implements CommandLineRunner {
         User bob = new User(null, "Bob Grey", "bob@gmail");
         userRepository.saveAll(Arrays.asList(maria,alex,bob));
 
-        Post post = new Post(null, fromDate("21/03/2018",fmt1), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", maria);
-        Post post2 = new Post(null, fromDate("23/03/2098",fmt1), "Bom dia", "Acordei feliz hoje!",maria);
+        Post post = new Post(null, fromDate("21/03/2018",fmt1), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(maria));
+        Post post2 = new Post(null, fromDate("23/03/2098",fmt1), "Bom dia", "Acordei feliz hoje!",new AuthorDTO(maria));
         postRepository.saveAll(Arrays.asList(post,post2));
 
     }
