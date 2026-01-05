@@ -40,6 +40,9 @@ public class Instantiation implements CommandLineRunner {
         Post post2 = new Post(null, fromDate("23/03/2098",fmt1), "Bom dia", "Acordei feliz hoje!",new AuthorDTO(maria));
         postRepository.saveAll(Arrays.asList(post,post2));
 
+        maria.getPostList().addAll(Arrays.asList(post,post2));
+        userRepository.save(maria);
+
     }
     public static Instant fromDate(String dateStr, DateTimeFormatter formatter) {
         LocalDate data = LocalDate.parse(dateStr, formatter);
