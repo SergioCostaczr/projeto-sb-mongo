@@ -6,6 +6,8 @@ import com.educandoweb.workshopmongo.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,4 +26,8 @@ public class PostService {
         return repo.searchTitle(text);
     }
 
+    public List<Post> fullSearch(String text, Instant minDate, Instant maxDate) {
+        maxDate = maxDate.plus(1, ChronoUnit.DAYS); // Adiciona 1 dia
+        return repo.fullSearch(text, minDate, maxDate);
+    }
 }
